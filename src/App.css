@@ -33,6 +33,29 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate-clockwise(360deg);
   }
 }
+
+@keyframes Car-flash {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+
+.cars {
+  font-size: 5rem;
+  animation: Car-flash infinite 500ms linear alternate;
+}
+
+/* .left {
+  transform: rotate(315deg);
+}
+
+.left {
+  animation: Car-flash infinite 500ms linear alternate;
+} */
