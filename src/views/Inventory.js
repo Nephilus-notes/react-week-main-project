@@ -1,26 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import Car from '../components/Car'
+import { DataContext } from '../contexts/dataProvider';
 
-export default function Inventory(props) {
-    const [cars, setCars] = useState([])
+export default function Inventory() {
+    const { cars } = useContext(DataContext)
 
-    useEffect(() => {
-        async function getCars(){
-            const response = await fetch("https://my-json-server.typicode.com/Llang8/cars-api/cars")
-            const data = await response.json()
-            setCars(data)
-            console.log(data)
-        }
-    
-        getCars()
-        },[])
     
     return (
         <div className="Inventory">
         <h1>Inventory</h1>
             <div className="flex-container">
 
-            { cars.map( car => <Car car={ car } key={ car.id }/>
+            { cars.map( car => <Car car={ car } key={ car.id } showLink = 'true' />
             )
             }
             </div>

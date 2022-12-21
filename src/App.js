@@ -5,6 +5,7 @@ import Inventory from './views/Inventory'
 import Profile from './views/Profile'
 import CarSingle from './views/CarSingle'
 
+
 function App() {
   return (
     <div className="App">

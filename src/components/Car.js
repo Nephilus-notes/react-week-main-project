@@ -1,8 +1,18 @@
+import { Link } from 'react-router-dom'
 
 export default function Car(props) {
+
+    function buildTitleLink() {
+        if (props.showLink) {
+            return ( <h3><Link to={ `/inventory/${ props.car.id }` }>{ props.car.name }</Link></h3>)
+        } else {
+           return <h3>{ props.car.name }</h3>
+        }
+    }
+
     return (
         <div className="Car">
-        <h3>{ props.car.name }</h3>
+        { buildTitleLink() }
         <h4>Selling Price: ${ props.car.selling_price }</h4>
         <h4>Car Info:</h4>
         <p><strong>Year: </strong>{ props.car.year } | <strong> Mileage: </strong>{ props.car.km_driven }km

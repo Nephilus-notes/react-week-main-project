@@ -25,7 +25,7 @@ export default function Profile(props) {
         <p>But it's hiding.</p>
         <p>Click below!</p>
         <ul>
-         {cars.map(car => <Button car={ car } handleClick={ ()=> setCar(car) } key={ car.id }/>)}
+         {cars.map(car => <Button car={ car } handleClick={ ()=> setCar(car) } key={ car.id } showLink = 'true'/>)}
           {
             (car) ?
             <Car car={ car }/> :
