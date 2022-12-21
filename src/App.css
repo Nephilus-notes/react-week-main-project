@@ -46,10 +46,27 @@
   }
 }
 
+.Car {
+  max-width: 500px;
+  border: 1px solid darkgrey;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 3px black;
+
+}
+
+.flex-container {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
 
 .cars {
   font-size: 5rem;
   animation: Car-flash infinite 500ms linear alternate;
+  display: inline-block;
 }
 
 /* .left {

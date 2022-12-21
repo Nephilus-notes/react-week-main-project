@@ -1,9 +1,9 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home'
-import Inventory from './components/Inventory'
-import Profile from './components/Profile'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Inventory from './views/Inventory'
+import Profile from './views/Profile'
+import CarSingle from './views/CarSingle'
 
 function App() {
   return (
@@ -18,10 +18,11 @@ function App() {
       </nav>
       <Routes>
         <Route path='/' element={ <Home/> } />
-        <Route path='/inventory' element= { <Inventory/> }/>
-        <Route path='/profile' element={ <Profile/> } />
-        {/* <Route path='/about' element= { <About/> }/>
-        <Route path='/contact' element={ <Contact/> } /> */}
+        <Route path='/profile' element={ <Profile/> } />    
+        <Route path='/inventory'>
+          <Route path=":id" element= { <CarSingle/> }></Route>
+          <Route path="" element= { <Inventory/> }></Route>
+        </Route>
       </Routes>
       </BrowserRouter>
     </div>
