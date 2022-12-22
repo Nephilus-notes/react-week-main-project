@@ -21,8 +21,15 @@ export default function Profile(props) {
         }
         //   console.table(data)
       }
-
       buildCarDb()
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+
+        console.log("form Submission")
+        addCar(formData.get('name'), formData.get('year'), formData.get('selling_price'), formData.get('km_driven'), formData.get('fuel'), formData.get('seller_type'), formData.get('transmission'), formData.get('owner'),formData.get('mileage'), formData.get('engine'), formData.get('max_power'), formData.get('torque'), formData.get('seats'))
       }
 
   return (
@@ -46,10 +53,10 @@ export default function Profile(props) {
         <input type="text" name="torque" placeholder="torque" />
         <input type="text" name="seats" placeholder="seats" />
         </div>
-        <button>Post it!</button>
+        <button onSubmit={handleSubmit}>Post it!</button>
       </form>
 
-      <button onClick={handlePopulate}>Pull it!!</button>
+      {/* <button onClick={handlePopulate}>Pull it!!</button> */}
       {/* <ul>
          {cars.map(car => <Button car={ car } handleClick={ async ()=>  await loadCar(car.id) } key={ car.id } showLink = 'true'/>)}
           {
