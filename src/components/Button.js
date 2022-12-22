@@ -6,5 +6,5 @@ export default function Button(props) {
 
     // console.log(props)
     return (
-<button onClick={ props.handleClick } >Car { props.car.id }</button>
+<button onClick={ props.handleClick } className='button' >{ props.car.name }</button>
     )}

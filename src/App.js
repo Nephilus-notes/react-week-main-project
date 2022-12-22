@@ -27,8 +27,8 @@ function App() {
             </li>
             {
             (user.loggedIn) ?
-          <li><button onClick={ logout }>Log Out</button></li> :
-          <li><button onClick={ login }>Login</button></li>
+          <li><button onClick={ logout } className='button'>Log Out</button></li> :
+          <li><button onClick={ login } className='button'>Login</button></li>
           }
           </ul>
         </nav>
@@ -36,7 +36,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/inventory">
-            <Route path=":id" element={<CarSingle />}></Route>
+            <Route path=':uid'>
+              <Route path=":id" element={<CarSingle />}></Route>
+            </Route>
             <Route path="" element={<Inventory />}></Route>
           </Route>
         </Routes>

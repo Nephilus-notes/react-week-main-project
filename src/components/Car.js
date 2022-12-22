@@ -4,7 +4,7 @@ export default function Car(props) {
 
     function buildTitleLink() {
         if (props.showLink) {
-            return ( <h3><Link to={ `/inventory/${ props.car.id }` }>{ props.car.name }</Link></h3>)
+            return ( <h3><Link to={ `/inventory/${ props.car.uid }/${ props.car.id }` }>{ props.car.name }</Link></h3>)
         } else {
            return <h3>{ props.car.name }</h3>
         }
@@ -25,5 +25,5 @@ export default function Car(props) {
         </p>
         <h4>Seller Info:</h4>
         <p><strong> Seller Type:</strong> { props.car.seller_type } | <strong>Owner:</strong> { props.car.owner }</p>
-        <p><small>Dashboard ID: {props.car.id} </small></p></div>
+        <p><small>Name {props.car.username} </small></p></div>
     )}

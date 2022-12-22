@@ -1,6 +1,41 @@
 .App {
   text-align: center;
+  background-color: darkgrey;
+  padding:50px;
+  height: 100vh;
 }
+
+a {
+  text-decoration: none;
+
+}
+
+nav {
+  margin: 0 20px;
+  padding: 10px;
+  max-width: 70%;
+  background-color: rgb(88, 88, 88);
+  margin-inline: auto;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+nav a {
+  color: white;
+  cursor: pointer;
+}
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+
 
 .App-logo {
   height: 40vmin;
@@ -52,7 +87,8 @@
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0 0 3px black;
-
+  padding:5px;
+  background-color: yellow;
 }
 
 .flex-container {
@@ -61,6 +97,8 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  max-width: 1000px;
+  margin-inline: auto;
 }
 
 .cars {
@@ -68,11 +106,13 @@
   animation: Car-flash infinite 500ms linear alternate;
   display: inline-block;
 }
-
-/* .left {
-  transform: rotate(315deg);
+.button {
+  padding: 5px 10px;
+  background-color: beige;
+  border-radius: 5px;
+  box-shadow: 0 0 3px;
+  width: clamp( 40px, 5rem + 5vw, 20rem)
 }
-
-.left {
-  animation: Car-flash infinite 500ms linear alternate;
-} */
+button:hover {
+  box-shadow: inset 0 0 5px 1px;
+}

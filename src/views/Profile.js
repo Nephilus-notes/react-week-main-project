@@ -1,28 +1,16 @@
 import { useState, useEffect, useContext } from "react";
 import Button from "../components/Button";
+import { AuthContext } from "../contexts/AuthProvider";
 import { DataContext } from "../contexts/DataProvider";
 import Car from "../components/Car";
+import { useParams } from 'react-router-dom'
+
 
 export default function Profile(props) {
   const { cars, loadCar, addCar } = useContext(DataContext);
+  const { user } = useContext(AuthContext)
   const [car, setCar] = useState("");
 
-
-  // function handlePopulate(event) {
-  //   event.preventDefault()
-  //     async function buildCarDb(){
-  //         const response = await fetch("https://my-json-server.typicode.com/Llang8/cars-api/cars")
-  //         const data = await response.json()
-  //       //   console.log(data[1])
-  //       for (let i = 1; i < data.length; i++) {
-  //         const newCar = data[i]
-  //           console.log(newCar)
-  //         addCar(newCar)
-  //       }
-  //       //   console.table(data)
-  //     }
-  //     buildCarDb()
-  //     }
 
       function handleSubmit(event) {
         event.preventDefault()
@@ -32,7 +20,7 @@ export default function Profile(props) {
         addCar(formData.get('name'), formData.get('year'), formData.get('selling_price'), formData.get('km_driven'), formData.get('fuel'), formData.get('seller_type'), formData.get('transmission'), formData.get('owner'),formData.get('mileage'), formData.get('engine'), formData.get('max_power'), formData.get('torque'), formData.get('seats'))
         event.target.reset()
       }
-
+       if (user.loggedIn) {
   return (
     <div className="Profile">
       <h1>Profile</h1>
@@ -54,16 +42,21 @@ export default function Profile(props) {
         <input type="text" name="torque" placeholder="torque" />
         <input type="text" name="seats" placeholder="seats" />
         </div>
-        <button>Post it!</button>
+        <button className='button'>Post it!</button>
       </form>
 
       {/* <button onClick={handlePopulate}>Pull it!!</button> */}
       <ul>
+      <div className="flex-container">
          {cars.map(car => <Button car={ car } handleClick={ async ()=> { 
-          const newCar = await loadCar(car.id)
+          console.log( car.uid)
+          console.log(user.uid )          
+          const newCar = await loadCar(user.uid, car.id)
+          console.log(user.uid, car.id)
           setCar(newCar)
          }
          } key={ car.id } />)}
+         </div>
                <div className="flex-container">
 
           {
@@ -75,5 +68,15 @@ export default function Profile(props) {
           </div>
         </ul>
     </div>
-  );
-}
+  )} else {
+  return ( 
+    <div className="Profile">
+      <h1>Profile</h1>
+
+      <h2>Create a New Listing</h2>
+    <p><strong>Please log in to view your car dashboard</strong></p>
+    </div>
+  )}
+  
+  ; 
+} 

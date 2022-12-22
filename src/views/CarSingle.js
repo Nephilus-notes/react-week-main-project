@@ -6,12 +6,12 @@ import { DataContext } from '../contexts/DataProvider';
 
 export default function CarSingle() {
     const[car, setCar] = useState({})
-    const { id } = useParams()
+    const { id, uid } = useParams()
     const { loadCar } = useContext(DataContext)
 
     useEffect(() => {
         async function handleLoadCar(){
-            const data = await loadCar(id)
+            const data = await loadCar(uid, id)
             setCar(data)
             console.log(data)
         }
@@ -23,7 +23,7 @@ export default function CarSingle() {
         <div className="car">
              <div className="flex-container">
                 
-            <Car key={car.id} car={car} /> 
+            <Car car={car} /> 
             </div>
         </div>
     )
