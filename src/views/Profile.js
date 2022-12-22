@@ -8,19 +8,22 @@ export default function Profile(props) {
 //   const [car, setCar] = useState("");
 
 
-  useEffect(() => {
+  function handlePopulate(event) {
+    event.preventDefault()
       async function buildCarDb(){
           const response = await fetch("https://my-json-server.typicode.com/Llang8/cars-api/cars")
           const data = await response.json()
         //   console.log(data[1])
-          const newCar = data[1]
-console.log(newCar)
+        for (let i = 1; i < data.length; i++) {
+          const newCar = data[i]
+            console.log(newCar)
           addCar(newCar)
+        }
         //   console.table(data)
       }
 
       buildCarDb()
-      },[])
+      }
 
   return (
     <div className="Profile">
@@ -45,6 +48,8 @@ console.log(newCar)
         </div>
         <button>Post it!</button>
       </form>
+
+      <button onClick={handlePopulate}>Pull it!!</button>
       {/* <ul>
          {cars.map(car => <Button car={ car } handleClick={ async ()=>  await loadCar(car.id) } key={ car.id } showLink = 'true'/>)}
           {
