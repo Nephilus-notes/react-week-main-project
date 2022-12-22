@@ -1,5 +1,6 @@
 import {useState, useEffect, createContext, useContext } from 'react'
-import { getFirestore, getDocs, collection, doc, getDoc, Timestamp, addDoc, orderBy, query } from '@firebase/firestore'
+import { getFirestore, getDocs, collection, doc, getDoc, Timestamp, addDoc, orderBy, query, setDoc } from '@firebase/firestore'
+import { AuthContext } from './AuthProvider'
 
 export const DataContext = createContext()
 
@@ -62,9 +63,10 @@ export const DataProvider = function (props) {
                 }
                 console.log(` this is a new car ${newCar} `)
                 console.log(newCar)
-                // const doc = await addDoc(collection(db, 'cars'), newCar)
+                const doc = await addDoc(collection(db, 'cars'), newCar)
 
-                newCar.id = doc.id
+                // newCar.id = doc.id
+                console.log(newCar)
                 setCars([newCar, ...cars])
             
             }

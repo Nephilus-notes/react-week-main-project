@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import Car from '../components/Car'
-import { DataContext } from '../contexts/dataProvider';
+import { DataContext } from '../contexts/DataProvider';
 
 export default function Inventory() {
     const { cars } = useContext(DataContext)

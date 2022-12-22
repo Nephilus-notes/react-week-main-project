@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom'
 import Car from '../components/Car'
-import { DataContext } from '../contexts/dataProvider';
+import { DataContext } from '../contexts/DataProvider';
 
 
 export default function CarSingle() {
