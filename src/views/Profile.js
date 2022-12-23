@@ -48,7 +48,7 @@ export default function Profile(props) {
       {/* <button onClick={handlePopulate}>Pull it!!</button> */}
       <ul>
       <div className="flex-container">
-         {userCars.map(car => <Button car={ car } handleClick={ async ()=> { 
+         {userCars?.map(car => <Button car={ car } handleClick={ async ()=> { 
           console.log( car.uid)
           console.log( user.uid )          
           const newCar = await loadCar(user.uid, car.id)

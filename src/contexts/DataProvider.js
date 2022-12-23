@@ -25,7 +25,7 @@ export const DataProvider = function (props) {
             const carsDocs = []
             const q = query(collectionGroup(db, 'car'))
             const querySnapshot = await getDocs(q)
-
+            // console.log(querySnapshot)
             querySnapshot.forEach(async (doc) => {
 
                 const userDataObject = await getUsername(doc)
@@ -49,23 +49,24 @@ export const DataProvider = function (props) {
             } 
                 async function getUserCars(){
                     const userCarsDocs = []
-                    console.log(user.uid)
+                    // console.log(user.uid)
                     const q = query(collection(db, 'user', user.uid, 'car'))
 
                     const querySnapshot = await getDocs(q)
-                    console.log(querySnapshot)
+                    // console.log(querySnapshot)
         
                     querySnapshot.forEach(async (doc) => {
             
                         userCarsDocs.push({
                             id:doc.id,
+                            uid: user.uid,
+                            username:user.username,
                             ...doc.data()
                         })
                         setUserCars(userCarsDocs)
                     })
         
                 }
-            
                 getUserCars()
             },[user.loggedIn])
 
@@ -118,7 +119,6 @@ export const DataProvider = function (props) {
                 // const doc = await addDoc(collection(db, 'cars'), newCar)
 
                 newCar.id = carDoc.id
-                console.log(newCar)
                 setCars([newCar, ...cars])
                 setUserCars([newCar, ...userCars])
             
@@ -135,6 +135,7 @@ export const DataProvider = function (props) {
         cars,
         loadCar, 
         addCar,
+        userCars
     }
 
     return (
