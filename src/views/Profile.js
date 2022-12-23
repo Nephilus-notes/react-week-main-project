@@ -50,7 +50,7 @@ export default function Profile(props) {
       <div className="flex-container">
          {cars.map(car => <Button car={ car } handleClick={ async ()=> { 
           console.log( car.uid)
-          console.log(user.uid )          
+          console.log( user.uid )          
           const newCar = await loadCar(user.uid, car.id)
           console.log(user.uid, car.id)
           setCar(newCar)

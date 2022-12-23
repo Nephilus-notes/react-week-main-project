@@ -6,8 +6,9 @@ export const DataContext = createContext()
 
 export const DataProvider = function (props) {
     const db = getFirestore()
-    const [cars, setCars] = useState([])
+    const [ cars, setCars ] = useState([])
     const { user } = useContext(AuthContext)
+    const [ userCars, setUserCars ] = useState([])
 
     async function getUsername(doc) {
         const userData = await getDoc(doc.ref.parent.parent)
@@ -41,6 +42,30 @@ export const DataProvider = function (props) {
     
         getCars()
         },[])
+
+        // useEffect(() => {
+        //     onAuthStateChanged(auth, (userInfo) => {
+        //         async function getUserCars(){
+        //             const userCarsDocs = []
+        //             console.log(user.uid)
+        //             const q = query(collection(db, 'user', user.uid, 'car'))
+
+        //             const querySnapshot = await getDocs(q)
+        //             console.log(querySnapshot)
+        
+        //             querySnapshot.forEach(async (doc) => {
+            
+        //                 userCarsDocs.push({
+        //                     id:doc.id,
+        //                     ...doc.data()
+        //                 })
+        //                 setUserCars(userCarsDocs)
+        //             })
+        
+        //         }
+            
+        //         getUserCars()
+        //     },[])
 
        
         async function loadCar(uid, id){

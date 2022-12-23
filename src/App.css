@@ -2,7 +2,7 @@
   text-align: center;
   background-color: darkgrey;
   padding:50px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 a {
@@ -18,13 +18,14 @@ nav {
   margin-inline: auto;
   border-radius: 4px;
   font-weight: 700;
+  border: 2px solid black
 }
 
 nav a {
   color: white;
   cursor: pointer;
 }
-nav ul {
+ul {
   padding: 0;
   margin: 0;
 }
