@@ -43,29 +43,31 @@ export const DataProvider = function (props) {
         getCars()
         },[])
 
-        // useEffect(() => {
-        //     onAuthStateChanged(auth, (userInfo) => {
-        //         async function getUserCars(){
-        //             const userCarsDocs = []
-        //             console.log(user.uid)
-        //             const q = query(collection(db, 'user', user.uid, 'car'))
+        useEffect(() => {
+            if (!user.loggedIn) {
+                return
+            } 
+                async function getUserCars(){
+                    const userCarsDocs = []
+                    console.log(user.uid)
+                    const q = query(collection(db, 'user', user.uid, 'car'))
 
-        //             const querySnapshot = await getDocs(q)
-        //             console.log(querySnapshot)
+                    const querySnapshot = await getDocs(q)
+                    console.log(querySnapshot)
         
-        //             querySnapshot.forEach(async (doc) => {
+                    querySnapshot.forEach(async (doc) => {
             
-        //                 userCarsDocs.push({
-        //                     id:doc.id,
-        //                     ...doc.data()
-        //                 })
-        //                 setUserCars(userCarsDocs)
-        //             })
+                        userCarsDocs.push({
+                            id:doc.id,
+                            ...doc.data()
+                        })
+                        setUserCars(userCarsDocs)
+                    })
         
-        //         }
+                }
             
-        //         getUserCars()
-        //     },[])
+                getUserCars()
+            },[user.loggedIn])
 
        
         async function loadCar(uid, id){
@@ -82,6 +84,7 @@ export const DataProvider = function (props) {
             if (carSnap.exists()) {
                 return {
                     id: carSnap.id,
+                    ...userDataObject,
                     ...carSnap.data()
                 }
             } else {
