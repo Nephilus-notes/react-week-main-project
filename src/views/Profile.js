@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 
 
 export default function Profile(props) {
-  const { cars, loadCar, addCar } = useContext(DataContext);
+  const { cars, userCars, loadCar, addCar } = useContext(DataContext);
   const { user } = useContext(AuthContext)
   const [car, setCar] = useState("");
 
@@ -48,7 +48,7 @@ export default function Profile(props) {
       {/* <button onClick={handlePopulate}>Pull it!!</button> */}
       <ul>
       <div className="flex-container">
-         {cars.map(car => <Button car={ car } handleClick={ async ()=> { 
+         {userCars.map(car => <Button car={ car } handleClick={ async ()=> { 
           console.log( car.uid)
           console.log( user.uid )          
           const newCar = await loadCar(user.uid, car.id)

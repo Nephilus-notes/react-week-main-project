@@ -120,6 +120,7 @@ export const DataProvider = function (props) {
                 newCar.id = carDoc.id
                 console.log(newCar)
                 setCars([newCar, ...cars])
+                setUserCars([newCar, ...userCars])
             
             }
 
